@@ -10,7 +10,7 @@ describe('unseal', function() {
   describe('using defaults', function() {
     var unseal, keying;
     
-    describe('unsealing', function() {
+    describe('verifying', function() {
       before(function() {
         keying = sinon.spy(function(q, cb){
           return cb(null, [ { secret: '12abcdef7890abcdef7890abcdef7890' } ]);
@@ -53,7 +53,7 @@ describe('unseal', function() {
           Foo: 'bar'
         });
       });
-    }); // unsealing
+    }); // verifying
     
   });
   

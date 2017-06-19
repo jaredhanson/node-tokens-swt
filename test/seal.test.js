@@ -20,7 +20,7 @@ describe('seal', function() {
     });
     
     
-    describe('encrypting to self', function() {
+    describe('signing to self', function() {
       var token;
       var now = new Date();
       
@@ -64,8 +64,8 @@ describe('seal', function() {
           expect(claims.claims.Foo).to.equal('bar');
         });
       });
-    }); // encrypting to self
+    }); // signing to self
   
-  });
+  }); // using defaults
   
-});
+}); // seal
