@@ -10,13 +10,15 @@ describe('seal', function() {
     var seal, keying;
 
     before(function() {
+      /*
       keying = sinon.spy(function(q, cb){
         if (!q.recipient) {
           return cb(null, [ { secret: '12abcdef7890abcdef7890abcdef7890' } ]);
         }
       });
+      */
       
-      seal = setup(keying);
+      seal = setup();
     });
     
     
@@ -25,16 +27,19 @@ describe('seal', function() {
       var now = new Date();
       
       before(function(done) {
-        seal({ Issuer: 'self', Audience: 'self', Foo: 'bar' }, { expiresAt: new Date(Date.now() + 1000) }, function(err, t) {
+        seal({ Issuer: 'self', Audience: 'self', Foo: 'bar' }, { secret: '12abcdef7890abcdef7890abcdef7890', expiresAt: new Date(Date.now() + 1000) }, function(err, t) {
           token = t;
           done(err);
         });
       });
       
+      /*
       after(function() {
         keying.reset();
       });
+      */
       
+      /*
       it('should query for key', function() {
         expect(keying.callCount).to.equal(1);
         var call = keying.getCall(0);
@@ -44,6 +49,7 @@ describe('seal', function() {
           algorithms: [ 'hmac-sha256' ]
         });
       });
+      */
       
       it('should generate a token', function() {
         expect(token.indexOf('&HMACSHA256=') != -1).to.be.true;
