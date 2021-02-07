@@ -1,6 +1,6 @@
 /* global describe, it */
 
-var setup = require('../lib/unseal');
+var unseal = require('../lib/unseal');
 var sinon = require('sinon');
 var expect = require('chai').expect;
 
@@ -8,7 +8,7 @@ var expect = require('chai').expect;
 describe('unseal', function() {
   
   describe('using defaults', function() {
-    var unseal, keying;
+    var  keying;
     
     describe('verifying', function() {
       before(function() {
@@ -18,7 +18,7 @@ describe('unseal', function() {
         });
         */
       
-        unseal = setup();
+        //unseal = setup();
       });
       
       var tkn;
