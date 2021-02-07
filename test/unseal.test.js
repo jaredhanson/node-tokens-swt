@@ -12,27 +12,30 @@ describe('unseal', function() {
     
     describe('verifying', function() {
       before(function() {
+        /*
         keying = sinon.spy(function(q, cb){
           return cb(null, [ { secret: '12abcdef7890abcdef7890abcdef7890' } ]);
         });
+        */
       
-        unseal = setup(keying);
+        unseal = setup();
       });
       
       var tkn;
       before(function(done) {
         var token = 'Issuer=self&Audience=self&Foo=bar&ExpiresOn=1497654934&HMACSHA256=q31KO2stUYRHggTXC8n55ZEdDrNO%2F87NW34ljr%2BvL48%3D';
         
-        unseal(token, function(err, t) {
+        unseal(token, { secret: '12abcdef7890abcdef7890abcdef7890' }, function(err, t) {
           tkn = t;
           done(err);
         });
       });
       
       after(function() {
-        keying.reset();
+        //keying.reset();
       });
       
+      /*
       it('should query for key', function() {
         expect(keying.callCount).to.equal(1);
         var call = keying.getCall(0);
@@ -41,6 +44,7 @@ describe('unseal', function() {
           algorithms: [ 'hmac-sha256' ],
         });
       });
+      */
       
       it('should unseal token', function() {
         expect(tkn).to.be.an('object');
