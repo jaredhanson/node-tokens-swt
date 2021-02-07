@@ -1,5 +1,5 @@
 var swt = require('simplewebtoken');
-var setup = require('../lib/seal');
+var seal = require('../lib/seal');
 var sinon = require('sinon');
 var expect = require('chai').expect;
 
@@ -7,7 +7,7 @@ var expect = require('chai').expect;
 describe('seal', function() {
   
   describe('using defaults', function() {
-    var seal, keying;
+    var keying;
 
     before(function() {
       /*
@@ -17,8 +17,6 @@ describe('seal', function() {
         }
       });
       */
-      
-      seal = setup();
     });
     
     
